@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# save some power
+echo 1 >/sys/devices/system/cpu/intel_pstate/no_turbo
+
+# No wakeup except on powerbutton
+F=/proc/acpi/wakeup
+awk -v F=$F '$3=="*enabled" {print $1>F;close(F)}' $F
+
+# card reader is takes power randomly, so disable it
+#echo auto > /sys/bus/usb/devices/usb2/power/control
+#echo 0 > /sys/bus/usb/devices/usb2/power/autosuspend
+#echo usb2 > /sys/bus/usb/drivers/usb/unbind
+
