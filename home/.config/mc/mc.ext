@@ -403,7 +403,8 @@ shell/.ico
 	Include=image
 
 include/image
-	Open=if [ "$DISPLAY" = "" ]; then zgv %f; else (xdg-open %f &); fi
+#	Open=if [ "$DISPLAY" = "" ]; then zgv %f; else (xdg-open %f &); fi
+	Open=eog %f &
 	View=%view{ascii} identify %f
 	#View=%view{ascii} asciiview %f
 
